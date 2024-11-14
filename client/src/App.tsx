@@ -38,7 +38,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <nav className="bg-gray-800 p-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold text-white">Obcerv Automated Testing Support Matrix</h1>
         <div className="text-white">
@@ -47,22 +47,27 @@ const App = () => {
           </a>
         </div>
       </nav>
-      <div className="flex">
-        <div className="w-1/4 p-4">
-          <Filters
-            providers={providers}
-            setProviders={setProviders}
-            versions={versions}
-            setVersions={setVersions}
-            topologies={topologies}
-            setTopologies={setTopologies}
-            sizes={sizes}
-            setSizes={setSizes}
-            ingressControllers={ingressControllers}
-            setIngressControllers={setIngressControllers}
-            connectivities={connectivities}
-            setConnectivities={setConnectivities}
-          />
+      <div className="flex flex-1">
+        <div className="w-1/4 p-4 flex flex-col justify-between">
+          <div>
+            <Filters
+              providers={providers}
+              setProviders={setProviders}
+              versions={versions}
+              setVersions={setVersions}
+              topologies={topologies}
+              setTopologies={setTopologies}
+              sizes={sizes}
+              setSizes={setSizes}
+              ingressControllers={ingressControllers}
+              setIngressControllers={setIngressControllers}
+              connectivities={connectivities}
+              setConnectivities={setConnectivities}
+            />
+          </div>
+          <div className="text-gray-600 text-sm mt-4">
+            &copy; {new Date().getFullYear()} ITRS. All rights reserved.
+          </div>
         </div>
         <div className="w-3/4 p-4">
           {data.filter(filterJobs).map((job, index) => (
@@ -70,7 +75,7 @@ const App = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
