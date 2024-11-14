@@ -37,7 +37,7 @@ jobs:
 
       - name: Build the project
         env:
-          OATSM_REPO_URL: ${{ github.repositoryUrl }}
+          OATSM_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
           OATSM_COMMIT_VERSION: ${{ github.sha }}
         working-directory: client
         run: npm run build
