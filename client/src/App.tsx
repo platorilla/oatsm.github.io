@@ -30,11 +30,12 @@ const App = () => {
 
   const filterJobs = (job: JobData) => {
     const providerMatch = providers.length === 0 || providers.includes(job.provider);
+    const versionMatch = versions.length === 0 || versions.includes(job.version);
     const topologyMatch = topologies.length === 0 || topologies.includes(job.topology);
     const sizeMatch = sizes.length === 0 || sizes.includes(job.size);
     const ingressControllerMatch = ingressControllers.length === 0 || ingressControllers.includes(job.ingressController);
     const connectivityMatch = connectivities.length === 0 || connectivities.includes(job.connectivity);
-    return providerMatch && topologyMatch && sizeMatch && ingressControllerMatch && connectivityMatch;
+    return providerMatch && versionMatch && topologyMatch && sizeMatch && ingressControllerMatch && connectivityMatch;
   };
 
   return (
