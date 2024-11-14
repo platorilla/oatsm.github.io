@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Badge from "./Badge";
 
 interface JobProps {
@@ -12,8 +13,10 @@ interface JobProps {
 }
 
 const Job = ({ provider, version, topology, size, ingressController, connectivity, jobStatusImageUrl, jobUrl }: JobProps) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
     const labelWidth = "120px";
     const valueWidth = "90px";
+
     return (
         <div className="inline-flex flex-col rounded-lg shadow-lg p-6 bg-slate-100 m-1 transition-colors duration-300 hover:bg-white">
             <div className="grid grid-cols-2 gap-4">
@@ -28,9 +31,17 @@ const Job = ({ provider, version, topology, size, ingressController, connectivit
                     <Badge label="Connectivity" value={connectivity} labelWidth={labelWidth} valueWidth={valueWidth} />
                 </div>
             </div>
-            <div className="flex justify-center mt-4" style={{ height: "20px" }}>
+            <div className="flex justify-center mt-4">
+                {!imageLoaded && (
+                    <div className="bg-gray-300 animate-pulse" style={{ width: "112px", height: "20px", animationDuration: '0.5s' }}></div>
+                )}
                 <a href={jobStatusImageUrl}>
-                    <img src={jobUrl}></img>
+                    <img
+                        src={jobUrl}
+                        onLoad={() => setImageLoaded(true)}
+                        className={`transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        alt="Job Status"
+                    />
                 </a>
             </div>
         </div>
