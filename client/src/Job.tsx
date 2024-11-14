@@ -28,7 +28,7 @@ const Job = ({ provider, version, topology, size, ingressController, connectivit
                     <Badge label="Connectivity" value={connectivity} labelWidth={labelWidth} valueWidth={valueWidth} />
                 </div>
             </div>
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-4" style={{ height: "20px" }}>
                 <a href={jobStatusImageUrl}>
                     <img src={jobUrl}></img>
                 </a>
