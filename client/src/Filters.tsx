@@ -1,4 +1,5 @@
 import Checkbox from "./CheckBox";
+import config from "./config";
 
 interface FiltersProps {
     providers: string[];
@@ -15,20 +16,7 @@ interface FiltersProps {
     setConnectivities: (value: string[]) => void;
 }
 
-const data = {
-    providers: [
-        { key: "EKS", description: "AWS Elastic Kubernetes Service (EKS)" },
-        { key: "OpenShift", description: "Red Hat OpenShift" }
-    ],
-    versions: ["1.29.0", "1.30.0", "1.31.0"],
-    topologies: [
-        { key: "HA", description: "High Availability" },
-        { key: "Non-HA", description: "Non-High Availability" }
-    ],
-    sizes: ["Large", "Medium", "Small"],
-    ingressControllers: ["ALB", "Nginx", "HAProxy"],
-    connectivities: ["Online", "Air-Gapped"]
-};
+const data = config.filters
 
 const Filters = ({
     providers, setProviders,
