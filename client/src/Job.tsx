@@ -15,7 +15,7 @@ const Job = ({ provider, version, topology, size, ingressController, connectivit
     const labelWidth = "120px";
     const valueWidth = "90px";
     return (
-        <div className="inline-flex flex-col rounded-lg shadow-lg p-6 bg-white m-1">
+        <div className="inline-flex flex-col rounded-lg shadow-lg p-6 bg-slate-100 m-1 transition-colors duration-300 hover:bg-white">
             <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-2">
                     <Badge label="Provider" value={provider} labelWidth={labelWidth} valueWidth={valueWidth} />
