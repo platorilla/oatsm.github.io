@@ -17,8 +17,8 @@ interface JobData {
 
 const data: JobData[] = config.jobs;
 
-const REPO_URL = "https://github.com/yourusername/your-repo";
-const COMMIT_VERSION = "abcdef123456"; // Replace with the actual commit version
+const REPO_URL = process.env.REACT_APP_REPO_URL || "http://example.com";
+const COMMIT_VERSION = process.env.REACT_APP_COMMIT_VERSION || "abcdef123456";
 
 const App = () => {
   const [providers, setProviders] = React.useState<string[]>([]);
