@@ -9,7 +9,7 @@ interface JobProps {
     connectivity: string;
     jobStatusImageUrl: string;
     jobUrl: string;
-};
+}
 
 const Job = ({ provider, version, topology, size, ingressController, connectivity, jobStatusImageUrl, jobUrl }: JobProps) => {
     const labelWidth = "150px";
