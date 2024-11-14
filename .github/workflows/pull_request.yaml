@@ -19,10 +19,13 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
+        working-directory: client
         run: npm install
 
       - name: Run lint
+        working-directory: client
         run: npm run lint
 
       - name: Build the project
+        working-directory: client
         run: npm run build

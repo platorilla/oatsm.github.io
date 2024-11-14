@@ -32,12 +32,14 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
+        working-directory: client
         run: npm install
 
       - name: Build the project
         env:
           REPO_URL: ${{ github.repositoryUrl }}
           COMMIT_VERSION: ${{ github.sha }}
+        working-directory: client
         run: npm run build
 
       - name: Upload artifact
