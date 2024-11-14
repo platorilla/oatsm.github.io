@@ -49,7 +49,7 @@ const App = () => {
         </div>
       </nav>
       <div className="flex flex-1">
-        <div className="w-1/4 p-4 flex flex-col justify-between">
+        <div className="w-1/4 p-4 flex flex-col justify-between shadow-lg bg-slate-100">
           <div>
             <Filters
               providers={providers}
