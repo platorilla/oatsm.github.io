@@ -43,7 +43,7 @@ const App = () => {
       <nav className="bg-gray-800 p-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold text-white">Obcerv Automated Testing Support Matrix</h1>
         <div className="text-white">
-          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="mr-4">
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="mr-4 text-sm">
             {`${packageJson.version} (${COMMIT_VERSION})`}
           </a>
         </div>
