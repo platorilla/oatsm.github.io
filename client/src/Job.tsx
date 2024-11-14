@@ -12,8 +12,8 @@ interface JobProps {
 }
 
 const Job = ({ provider, version, topology, size, ingressController, connectivity, jobStatusImageUrl, jobUrl }: JobProps) => {
-    const labelWidth = "150px";
-    const valueWidth = "100px";
+    const labelWidth = "120px";
+    const valueWidth = "90px";
     return (
         <div className="inline-flex flex-col rounded-lg shadow-lg p-6 bg-white m-1">
             <div className="grid grid-cols-2 gap-4">
