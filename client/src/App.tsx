@@ -17,8 +17,8 @@ interface JobData {
 
 const data: JobData[] = config.jobs;
 
-const REPO_URL = process.env.REACT_APP_REPO_URL || "http://example.com";
-const COMMIT_VERSION = process.env.REACT_APP_COMMIT_VERSION || "abcdef123456";
+const REPO_URL = import.meta.env.OATSM_REPO_URL ?? "http://example.com";
+const COMMIT_VERSION = import.meta.env.OATSM_COMMIT_VERSION ?? "abcdef123456";
 
 const App = () => {
   const [providers, setProviders] = React.useState<string[]>([]);
