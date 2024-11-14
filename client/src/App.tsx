@@ -2,6 +2,7 @@ import React from "react";
 import Filters from "./Filters";
 import Job from "./Job";
 import config from "./config";
+import packageJson from "../package.json";
 
 interface JobData {
   provider: string;
@@ -15,6 +16,9 @@ interface JobData {
 }
 
 const data: JobData[] = config.jobs;
+
+const REPO_URL = "https://github.com/yourusername/your-repo";
+const COMMIT_VERSION = "abcdef123456"; // Replace with the actual commit version
 
 const App = () => {
   const [providers, setProviders] = React.useState<string[]>([]);
@@ -35,8 +39,13 @@ const App = () => {
 
   return (
     <>
-      <nav className="bg-gray-800 p-4">
-        <h1 className="text-2xl font-bold text-white text-center">Obcerv Automated Testing Support Matrix</h1>
+      <nav className="bg-gray-800 p-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-white">Obcerv Automated Testing Support Matrix</h1>
+        <div className="text-white">
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="mr-4">
+            {`${packageJson.version} (${COMMIT_VERSION})`}
+          </a>
+        </div>
       </nav>
       <div className="flex">
         <div className="w-1/4 p-4">
