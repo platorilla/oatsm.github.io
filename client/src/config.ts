@@ -2,7 +2,8 @@ const config = {
     filters: {
         providers: [
             { key: "EKS", description: "AWS Elastic Kubernetes Service (EKS)" },
-            { key: "OpenShift", description: "Red Hat OpenShift" }
+            { key: "OpenShift", description: "Red Hat OpenShift" },
+            { key: "vSphere", description: "VMWare vSphere" }
         ],
         versions: ["1.29.0", "1.30.0", "1.31.0"],
         topologies: [
@@ -10,7 +11,7 @@ const config = {
             { key: "Non-HA", description: "Non-High Availability" }
         ],
         sizes: ["Large", "Medium", "Small"],
-        ingressControllers: ["ALB", "Nginx", "HAProxy"],
+        ingressControllers: ["ALB", "Nginx", "HAProxy", "Kong"],
         connectivities: ["Online", "Air-Gapped"]
     },
 
@@ -44,7 +45,17 @@ const config = {
             ingressController: "HAProxy",
             jobStatusImageUrl: "https://jenkins.itrsgroup.com/job/Apps/job/QA/job/obcerv-tests/job/dev/",
             jobUrl: "https://jenkins.itrsgroup.com/buildStatus/icon?job=Apps%2FQA%2Fobcerv-tests%2Fdev/"
-        }
+        },
+        {
+            provider: "vSphere",
+            topology: "HA",
+            version: "1.30.0",
+            connectivity: "Online",
+            size: "Small",
+            ingressController: "Kong",
+            jobStatusImageUrl: "https://jenkins.itrsgroup.com/job/Apps/job/QA/job/obcerv-tests/job/dev/",
+            jobUrl: "https://jenkins.itrsgroup.com/buildStatus/icon?job=Apps%2FQA%2Fobcerv-tests%2Fdev/"
+        },
     ]
 };
 

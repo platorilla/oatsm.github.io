@@ -17,8 +17,8 @@ interface JobData {
 
 const data: JobData[] = config.jobs;
 
-const REPO_URL = process.env.REACT_APP_REPO_URL || "http://example.com";
-const COMMIT_VERSION = process.env.REACT_APP_COMMIT_VERSION || "abcdef123456";
+const REPO_URL = import.meta.env.OATSM_REPO_URL ?? "http://example.com";
+const COMMIT_VERSION = import.meta.env.OATSM_COMMIT_VERSION ?? "abcdef123456";
 
 const App = () => {
   const [providers, setProviders] = React.useState<string[]>([]);
@@ -30,15 +30,16 @@ const App = () => {
 
   const filterJobs = (job: JobData) => {
     const providerMatch = providers.length === 0 || providers.includes(job.provider);
+    const versionMatch = versions.length === 0 || versions.includes(job.version);
     const topologyMatch = topologies.length === 0 || topologies.includes(job.topology);
     const sizeMatch = sizes.length === 0 || sizes.includes(job.size);
     const ingressControllerMatch = ingressControllers.length === 0 || ingressControllers.includes(job.ingressController);
     const connectivityMatch = connectivities.length === 0 || connectivities.includes(job.connectivity);
-    return providerMatch && topologyMatch && sizeMatch && ingressControllerMatch && connectivityMatch;
+    return providerMatch && versionMatch && topologyMatch && sizeMatch && ingressControllerMatch && connectivityMatch;
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-slate-50">
       <nav className="bg-gray-800 p-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold text-white">Obcerv Automated Testing Support Matrix</h1>
         <div className="text-white">
@@ -48,7 +49,7 @@ const App = () => {
         </div>
       </nav>
       <div className="flex flex-1">
-        <div className="w-1/4 p-4 flex flex-col justify-between">
+        <div className="w-1/6 p-4 flex flex-col justify-between shadow-lg bg-neutral-100">
           <div>
             <Filters
               providers={providers}
@@ -69,7 +70,7 @@ const App = () => {
             &copy; {new Date().getFullYear()} ITRS. All rights reserved.
           </div>
         </div>
-        <div className="w-3/4 p-4">
+        <div className="w-5/6 p-4">
           {data.filter(filterJobs).map((job, index) => (
             <Job key={index} {...job} />
           ))}
