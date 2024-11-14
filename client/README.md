@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# Obcerv Automated Testing Support Matrix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This page shows all possible tests for the deployments of Obcerv.
 
-Currently, two official plugins are available:
+## Quick start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Ensure that you have `npm` installed, then run these commands:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```shell
+cd client
+npm i -D
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To run a development server:
+
+```shell
+npm run dev
+```
+
+To publish this to GitHub pages, merge your changes to the `main` branch then wait for GitHub actions to publish.
+
+## Configuration
+
+You can find the app's configuration in [`client/src/config.ts`](/client/src/config.ts).
+
+`config.filters` is where you can change the filtering checkboxes that will appear on the left sidebar.
+
+`config.jobs` are the jobs that will be shown by the app.
