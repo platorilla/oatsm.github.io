@@ -6,7 +6,7 @@ interface CheckboxProps {
 
 const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
     return (
-        <label className="inline-flex items-center space-x-2">
+        <label className="inline-flex items-center space-x-2 mt-1 mx-2">
             <input
                 type="checkbox"
                 className="form-checkbox h-5 w-5 text-blue-600"
