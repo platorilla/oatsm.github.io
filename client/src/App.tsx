@@ -1,44 +1,40 @@
-import { useState } from "react";
-import reactLogo from "@assets/react.svg";
-import viteLogo from "/vite.svg";
+import Filters from "./Filters";
+import Job from "./Job";
+import React from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [clusters, setClusters] = React.useState<string[]>([]);
+  const data = [
+    {
+      provider: "EKS",
+      topology: "HA",
+      version: "1.29.0",
+      connectivity: "Online",
+      size: "Large",
+      ingressController: "ALB",
+      jobStatusImageUrl: "https://jenkins.itrsgroup.com/job/Apps/job/QA/job/obcerv-tests/job/dev/",
+      jobUrl: "https://jenkins.itrsgroup.com/buildStatus/icon?job=Apps%2FQA%2Fobcerv-tests%2Fdev/"
+    },
+    {
+      provider: "OpenShift",
+      topology: "Non-HA",
+      version: "1.31.0",
+      connectivity: "Air-Gapped",
+      size: "Medium",
+      ingressController: "Nginx",
+      jobStatusImageUrl: "https://jenkins.itrsgroup.com/job/Apps/job/QA/job/obcerv-tests/job/dev/",
+      jobUrl: "https://jenkins.itrsgroup.com/buildStatus/icon?job=Apps%2FQA%2Fobcerv-tests%2Fdev/"
+    }
+  ];
 
   return (
-    <div className="m-auto flex grow flex-col items-center space-y-10">
-      <div className="flex">
-        <a href="https://vitejs.dev" target="_blank">
-          <img
-            src={viteLogo}
-            className="h-36 p-6  transition-all duration-300 hover:drop-shadow-xl"
-            alt="Vite logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img
-            src={reactLogo}
-            className="h-36 animate-[spin_20s_linear_infinite] p-6 transition-all hover:drop-shadow-xl "
-            alt="React logo"
-          />
-        </a>
-      </div>
-      <h1 className="font-sans text-5xl">Vite + React</h1>
-      <div className="flex flex-col p-8">
-        <button
-          className="cursor-pointer rounded-lg border-2 border-solid bg-gray-300 p-2 font-medium transition-all duration-200 hover:border-blue-600"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="text-gray-800">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      {data.filter((job) => {
+        if (clusters.length === 0) return true;
+        return clusters.includes(job.provider);
+      }).map((job, index) => <Job key={index} {...job}></Job>)}
+      <Filters clusters={clusters} setClusters={setClusters}></Filters>
+    </>
   );
 }
 
