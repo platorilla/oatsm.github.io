@@ -54,7 +54,6 @@ const App = () => {
   const [ingressControllers, setIngressControllers] = React.useState<string[]>([]);
   const [connectivities, setConnectivities] = React.useState<string[]>([]);
 
-
   const filterJobs = (job: JobData) => {
     const providerMatch = providers.length === 0 || providers.includes(job.provider);
     const topologyMatch = topologies.length === 0 || topologies.includes(job.topology);
@@ -65,29 +64,34 @@ const App = () => {
   };
 
   return (
-    <div className="p-4">
-      <p>
-        <Filters
-          providers={providers}
-          setProviders={setProviders}
-          versions={versions}
-          setVersions={setVersions}
-          topologies={topologies}
-          setTopologies={setTopologies}
-          sizes={sizes}
-          setSizes={setSizes}
-          ingressControllers={ingressControllers}
-          setIngressControllers={setIngressControllers}
-          connectivities={connectivities}
-          setConnectivities={setConnectivities}
-        />
-      </p>
-      <p>
-        {data.filter(filterJobs).map((job, index) => (
-          <Job key={index} {...job} />
-        ))}
-      </p>
-    </div>
+    <>
+      <nav className="bg-gray-800 p-4">
+        <h1 className="text-2xl font-bold text-white text-center">Obcerv Automated Testing Support Matrix</h1>
+      </nav>
+      <div className="flex">
+        <div className="w-1/4 p-4">
+          <Filters
+            providers={providers}
+            setProviders={setProviders}
+            versions={versions}
+            setVersions={setVersions}
+            topologies={topologies}
+            setTopologies={setTopologies}
+            sizes={sizes}
+            setSizes={setSizes}
+            ingressControllers={ingressControllers}
+            setIngressControllers={setIngressControllers}
+            connectivities={connectivities}
+            setConnectivities={setConnectivities}
+          />
+        </div>
+        <div className="w-3/4 p-4">
+          {data.filter(filterJobs).map((job, index) => (
+            <Job key={index} {...job} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
